@@ -1,7 +1,7 @@
 /**
  * store.ts — Estado global con zustand: selección, búsqueda, modo juego.
  */
-import { create } from 'zustand';
+import { createStore } from 'zustand/vanilla';
 import { ELEMENTOS, type Elemento, type CategoriaId } from '../data/elements';
 
 export type Modo = 'tabla' | 'juego';
@@ -64,7 +64,7 @@ function nuevaPregunta(): QuizState {
   };
 }
 
-export const useStore = create<AppState>((set, get) => ({
+export const useStore = createStore<AppState>((set, get) => ({
   seleccionado: null,
   busqueda: '',
   categoriaFiltro: null,
