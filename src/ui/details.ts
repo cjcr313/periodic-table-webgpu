@@ -26,7 +26,7 @@ export function createDetailsPanel(): { render: () => void } {
       <div class="mb-3 flex items-start justify-between gap-2">
         <div class="flex items-center gap-3">
           <div class="flex h-16 w-16 flex-col items-center justify-center rounded-lg border"
-               style="background:color-mix(in oklab, ${cat.color} 16%, #0a1120);border-color:color-mix(in oklab, ${cat.color} 55%, transparent)">
+               style="background:color-mix(in oklab, ${cat.color} 16%, var(--pt-cell-base));border-color:color-mix(in oklab, ${cat.color} 55%, transparent)">
             <span class="font-mono text-2xl font-bold" style="color:${cat.color}">${el.simbolo}</span>
             <span class="font-mono text-[9px] text-slate-400">z=${el.z}</span>
           </div>

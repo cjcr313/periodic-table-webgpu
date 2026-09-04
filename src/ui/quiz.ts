@@ -2,6 +2,7 @@
  * quiz.ts — Modo juego: adivina el elemento por pistas.
  */
 import { useStore } from './store';
+import { crearBotonTema } from './theme';
 
 export function createQuiz(): { render: () => void } {
   let root: HTMLElement | null = null;
@@ -80,6 +81,9 @@ export function createQuiz(): { render: () => void } {
     root.querySelector('#btn-tabla')!.addEventListener('click', () => {
       useStore.getState().setModo('tabla');
     });
+    // Botón de tema también disponible en modo juego
+    const filaAcciones = root.querySelector('#btn-tabla')!.parentElement!;
+    filaAcciones.insertBefore(crearBotonTema(), root.querySelector('#btn-tabla'));
     root.querySelector('#btn-pista')?.addEventListener('click', () => {
       useStore.getState().mostrarPista();
       render();

@@ -12,6 +12,13 @@
       href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚛️</text></svg>"
     />
     <title>Tabla Periódica · Beta 0.1</title>
+    <script>
+      // Tema antes del primer pintado para evitar destello (ver src/ui/theme.ts)
+      try {
+        if (localStorage.getItem('pt:theme') === 'claro')
+          document.documentElement.dataset.theme = 'light';
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <canvas id="bg3d"></canvas>
