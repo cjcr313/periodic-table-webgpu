@@ -4115,7 +4115,7 @@ void main() {
         class="glass w-56 rounded-md px-3 py-1.5 text-xs text-slate-200 placeholder:text-slate-500 outline-none focus:border-cyan-400/60" />
       <button id="btn-juego" class="hud-btn">🎮 Modo juego</button>
     </div>
-  `,i.appendChild(t),t.querySelector("#header-acciones").insertBefore(cl(),t.querySelector("#btn-juego"));const n=document.createElement("div");n.className="mb-3 flex flex-wrap gap-1.5";for(const d of sl){const g=document.createElement("button");g.className="chip",g.dataset.cat=d.id,g.innerHTML=`<span class="mr-1.5 inline-block h-2 w-2 rounded-full" style="background:${d.color}"></span>${d.nombre}`,g.onclick=()=>{Dt.getState().setCategoriaFiltro(d.id),m()},n.appendChild(g)}i.appendChild(n);const r=document.createElement("div");r.className="overflow-x-auto pb-2";const a=document.createElement("div");a.id="tabla-grid",a.className="grid min-w-[900px] gap-[3px]",a.style.gridTemplateColumns="repeat(18, minmax(0, 1fr))",r.appendChild(a),i.appendChild(r);const s=document.createElement("button");s.style.gridColumn="3",s.style.gridRow="6",s.className="flex cursor-pointer items-center justify-center rounded border border-pink-400/40 bg-pink-500/10 text-[9px] text-pink-300 transition-all duration-150 hover:scale-105 hover:border-pink-400/80",s.innerHTML="57–71<br>La–Lu",s.title="Lantánidos: ver su fila ↓",s.setAttribute("aria-label","Ver lantánidos (57–71)"),s.onclick=()=>e("lantenido","#f472b6"),a.appendChild(s);const o=document.createElement("button");o.style.gridColumn="3",o.style.gridRow="7",o.className="flex cursor-pointer items-center justify-center rounded border border-fuchsia-400/40 bg-fuchsia-500/10 text-[9px] text-fuchsia-300 transition-all duration-150 hover:scale-105 hover:border-fuchsia-400/80",o.innerHTML="89–103<br>Ac–Lr",o.title="Actínidos: ver su fila ↓",o.setAttribute("aria-label","Ver actínidos (89–103)"),o.onclick=()=>e("actinido","#e879f9"),a.appendChild(o);const c=document.createElement("div");c.className="f-label",c.style.gridColumn="1 / span 2",c.style.gridRow="9",c.textContent="Lantánidos",a.appendChild(c);const l=document.createElement("div");l.className="f-label act",l.style.gridColumn="1 / span 2",l.style.gridRow="10",l.textContent="Actínidos",a.appendChild(l);for(const d of lr){const g=ol(d.categoria),x=document.createElement("button"),{col:b,row:p}=zp(d);x.className="cell fade-in group relative flex cursor-pointer flex-col items-center justify-center rounded-md border aspect-square transition-all duration-150 hover:z-10 hover:scale-110 hover:shadow-lg",x.style.gridColumn=String(b),x.style.gridRow=String(p),x.style.background=`color-mix(in oklab, ${g.color} 14%, var(--pt-cell-base))`,x.style.borderColor=`color-mix(in oklab, ${g.color} 45%, transparent)`,x.dataset.z=String(d.z),x.dataset.nombre=d.nombre.toLowerCase(),x.dataset.simbolo=d.simbolo.toLowerCase(),x.dataset.cat=d.categoria,x.innerHTML=`
+  `,i.appendChild(t),t.querySelector("#header-acciones").insertBefore(cl(),t.querySelector("#btn-juego"));const n=document.createElement("div");n.className="mb-3 flex flex-wrap gap-1.5";for(const d of sl){const g=document.createElement("button");g.className="chip",g.dataset.cat=d.id,g.innerHTML=`<span class="mr-1.5 inline-block h-2 w-2 rounded-full" style="background:${d.color}"></span>${d.nombre}`,g.onclick=()=>{Dt.getState().setCategoriaFiltro(d.id),m()},n.appendChild(g)}i.appendChild(n);const r=document.createElement("div");r.className="overflow-x-auto pb-2";const a=document.createElement("div");a.id="tabla-grid",a.className="grid min-w-[900px] gap-[3px]",a.style.gridTemplateColumns="repeat(18, minmax(0, 1fr))",r.appendChild(a),i.appendChild(r);const s=document.createElement("button");s.style.gridColumn="3",s.style.gridRow="6",s.className="flex cursor-pointer items-center justify-center rounded border border-pink-400/40 bg-pink-500/10 text-[9px] text-pink-300 transition-all duration-150 hover:scale-105 hover:border-pink-400/80",s.innerHTML="57–71<br>La–Lu",s.title="Lantánidos: ver su fila ↓",s.setAttribute("aria-label","Ver lantánidos (57–71)"),s.onclick=()=>e("lantenido","#f472b6"),a.appendChild(s);const o=document.createElement("button");o.style.gridColumn="3",o.style.gridRow="7",o.className="flex cursor-pointer items-center justify-center rounded border border-fuchsia-400/40 bg-fuchsia-500/10 text-[9px] text-fuchsia-300 transition-all duration-150 hover:scale-105 hover:border-fuchsia-400/80",o.innerHTML="89–103<br>Ac–Lr",o.title="Actínidos: ver su fila ↓",o.setAttribute("aria-label","Ver actínidos (89–103)"),o.onclick=()=>e("actinido","#e879f9"),a.appendChild(o);const c=document.createElement("div");c.className="f-label",c.style.gridColumn="1 / span 2",c.style.gridRow="9",c.textContent="Lantánidos",a.appendChild(c);const l=document.createElement("div");l.className="f-label act",l.style.gridColumn="1 / span 2",l.style.gridRow="10",l.textContent="Actínidos",a.appendChild(l);for(const d of lr){const g=ol(d.categoria),x=document.createElement("button"),{col:b,row:p}=zp(d);x.className="cell group relative flex cursor-pointer flex-col items-center justify-center rounded-md border aspect-square transition-all duration-150 hover:z-10 hover:scale-110 hover:shadow-lg",x.style.gridColumn=String(b),x.style.gridRow=String(p),x.style.background=`color-mix(in oklab, ${g.color} 14%, var(--pt-cell-base))`,x.style.borderColor=`color-mix(in oklab, ${g.color} 45%, transparent)`,x.dataset.z=String(d.z),x.dataset.nombre=d.nombre.toLowerCase(),x.dataset.simbolo=d.simbolo.toLowerCase(),x.dataset.cat=d.categoria,x.innerHTML=`
       <span class="absolute top-0.5 left-1 font-mono text-[8px] text-slate-400">${d.z}</span>
       <span class="font-mono text-sm font-bold sm:text-base" style="color:${g.color}">${d.simbolo}</span>
       <span class="max-w-full truncate px-1 text-[7px] text-slate-400">${d.nombre}</span>
@@ -4156,44 +4156,44 @@ void main() {
           <p>${r.curiosidad}</p>
         </div>
       </div>
-    `,document.body.appendChild(i),i.querySelector("#cerrar-ficha").addEventListener("click",()=>{n(null),e()})}return{render:e}}function Hp(){let i=null;function e(){const t=Dt.getState();if(t.modo!=="juego"||!t.quiz){i&&(i.remove(),i=null);return}i||(i=document.createElement("div"),i.id="quiz-root",document.getElementById("app-root").prepend(i));const n=t.quiz;i.className="mx-auto max-w-3xl",i.innerHTML=`
+    `,document.body.appendChild(i),i.querySelector("#cerrar-ficha").addEventListener("click",()=>{n(null),e()})}return{render:e}}function Hp(){let i=null,e=null;function t(){const n=Dt.getState();if(n.modo!=="juego"||!n.quiz){i&&(i.remove(),i=null),e=null;return}i||(i=document.createElement("div"),i.id="quiz-root",document.getElementById("app-root").prepend(i));const r=n.quiz,a=JSON.stringify({objetivo:r.objetivo.z,opciones:r.opciones.map(o=>o.z),pistasMostradas:r.pistasMostradas,resuelto:r.resuelto,puntaje:r.puntaje,racha:r.racha,preguntasTotales:r.preguntasTotales});if(a===e)return;e=a,i.className="mx-auto max-w-3xl",i.innerHTML=`
       <header class="mb-4 flex flex-wrap items-center justify-between gap-3">
         <div>
           <h1 class="text-xl font-bold tracking-tight text-cyan-200">🎮 ¿Qué elemento soy?</h1>
           <p class="text-xs text-slate-400">Adivina con las pistas · menos pistas = más puntos</p>
         </div>
         <div class="flex items-center gap-2">
-          <span class="chip">⭐ ${n.puntaje} pts</span>
-          <span class="chip">🔥 racha ${n.racha}</span>
+          <span class="chip">⭐ ${r.puntaje} pts</span>
+          <span class="chip">🔥 racha ${r.racha}</span>
           <button id="btn-tabla" class="hud-btn">📊 Volver a la tabla</button>
         </div>
       </header>
 
       <div class="glass rounded-xl p-5">
         <div class="space-y-2">
-          ${n.pistas.slice(0,n.pistasMostradas).map((a,s)=>`
+          ${r.pistas.slice(0,r.pistasMostradas).map((o,c)=>`
             <div class="flex gap-2 rounded-lg border border-slate-700/50 bg-slate-800/40 px-3 py-2 text-[13px] text-slate-200">
-              <span class="font-mono text-cyan-300">${s+1}.</span><span>${a}</span>
+              <span class="font-mono text-cyan-300">${c+1}.</span><span>${o}</span>
             </div>`).join("")}
         </div>
 
-        ${n.resuelto===null?`
+        ${r.resuelto===null?`
         <div class="mt-4 flex items-center justify-between">
-          <button id="btn-pista" class="hud-btn" ${n.pistasMostradas>=n.pistas.length?"disabled":""}>💡 Otra pista</button>
+          <button id="btn-pista" class="hud-btn" ${r.pistasMostradas>=r.pistas.length?"disabled":""}>💡 Otra pista</button>
         </div>
         <div class="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
-          ${n.opciones.map(a=>`
-            <button class="opt hud-btn flex-col! py-3" data-z="${a.z}">
-              <span class="font-mono text-lg font-bold">${a.simbolo}</span>
-              <span class="text-[10px] text-slate-400">${a.nombre}</span>
+          ${r.opciones.map(o=>`
+            <button class="opt hud-btn flex-col! py-3" data-z="${o.z}">
+              <span class="font-mono text-lg font-bold">${o.simbolo}</span>
+              <span class="text-[10px] text-slate-400">${o.nombre}</span>
             </button>`).join("")}
         </div>`:`
-        <div class="mt-4 rounded-lg border px-4 py-3 text-center ${n.resuelto?"border-emerald-400/50 bg-emerald-500/10 text-emerald-200":"border-rose-400/50 bg-rose-500/10 text-rose-200"}">
-          ${n.resuelto?`¡Correcto! Era <b>${n.objetivo.nombre}</b> (${n.objetivo.simbolo}) 🎉`:`Era <b>${n.objetivo.nombre}</b> (${n.objetivo.simbolo}). ¡La próxima cae! 💪`}
-          <p class="mt-1 text-[11px] text-slate-400">💡 ${n.objetivo.curiosidad}</p>
+        <div class="mt-4 rounded-lg border px-4 py-3 text-center ${r.resuelto?"border-emerald-400/50 bg-emerald-500/10 text-emerald-200":"border-rose-400/50 bg-rose-500/10 text-rose-200"}">
+          ${r.resuelto?`¡Correcto! Era <b>${r.objetivo.nombre}</b> (${r.objetivo.simbolo}) 🎉`:`Era <b>${r.objetivo.nombre}</b> (${r.objetivo.simbolo}). ¡La próxima cae! 💪`}
+          <p class="mt-1 text-[11px] text-slate-400">💡 ${r.objetivo.curiosidad}</p>
         </div>
         <div class="mt-3 flex justify-center">
           <button id="btn-siguiente" class="hud-btn active">▶ Siguiente pregunta</button>
         </div>`}
       </div>
-    `,i.querySelector("#btn-tabla").addEventListener("click",()=>{Dt.getState().setModo("tabla")}),i.querySelector("#btn-tabla").parentElement.insertBefore(cl(),i.querySelector("#btn-tabla")),i.querySelector("#btn-pista")?.addEventListener("click",()=>{Dt.getState().mostrarPista(),e()});for(const a of i.querySelectorAll(".opt"))a.addEventListener("click",()=>{const s=Number(a.dataset.z),o=n.opciones.find(c=>c.z===s);Dt.getState().responderQuiz(o),e()});i.querySelector("#btn-siguiente")?.addEventListener("click",()=>{Dt.getState().iniciarQuiz(),e()})}return{render:e}}const kp=document.getElementById("bg3d");Ip(kp);const Wp=document.getElementById("app-root"),as=document.createElement("div");as.id="tabla-host";Wp.appendChild(as);const Xp=Vp(),qp=Hp();let vo=null,Mo=null;function ss(){const i=Dt.getState();i.modo!==vo&&(i.modo==="tabla"&&Gp(as),vo=i.modo),i.modo==="tabla"?i.seleccionado?.z!==Mo&&(Mo=i.seleccionado?.z??null,Xp.render()):qp.render(),requestAnimationFrame(ss)}Dt.subscribe(ss);ss();
+    `,i.querySelector("#btn-tabla").addEventListener("click",()=>{Dt.getState().setModo("tabla")}),i.querySelector("#btn-tabla").parentElement.insertBefore(cl(),i.querySelector("#btn-tabla")),i.querySelector("#btn-pista")?.addEventListener("click",()=>{Dt.getState().mostrarPista(),t()});for(const o of i.querySelectorAll(".opt"))o.addEventListener("click",()=>{const c=Number(o.dataset.z),l=r.opciones.find(h=>h.z===c);Dt.getState().responderQuiz(l),t()});i.querySelector("#btn-siguiente")?.addEventListener("click",()=>{Dt.getState().iniciarQuiz(),t()})}return{render:t}}const kp=document.getElementById("bg3d");Ip(kp);const Wp=document.getElementById("app-root"),as=document.createElement("div");as.id="tabla-host";Wp.appendChild(as);const Xp=Vp(),qp=Hp();let vo=null,Mo=null;function ss(){const i=Dt.getState();i.modo!==vo&&(i.modo==="tabla"&&Gp(as),vo=i.modo),i.modo==="tabla"?i.seleccionado?.z!==Mo&&(Mo=i.seleccionado?.z??null,Xp.render()):qp.render(),requestAnimationFrame(ss)}Dt.subscribe(ss);ss();
