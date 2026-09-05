@@ -6,6 +6,9 @@ import { crearBotonTema } from './theme';
 
 export function createQuiz(): { render: () => void } {
   let root: HTMLElement | null = null;
+  // main.ts llama render() en cada frame; esta firma evita reconstruir el DOM
+  // del quiz ~60 veces/seg (botones re-creados constantemente = clics fallidos).
+  let firma: string | null = null;
 
   function render(): void {
     const st = useStore.getState();
@@ -14,6 +17,7 @@ export function createQuiz(): { render: () => void } {
         root.remove();
         root = null;
       }
+      firma = null;
       return;
     }
 
@@ -24,6 +28,17 @@ export function createQuiz(): { render: () => void } {
     }
 
     const q = st.quiz;
+    const sig = JSON.stringify({
+      objetivo: q.objetivo.z,
+      opciones: q.opciones.map((o) => o.z),
+      pistasMostradas: q.pistasMostradas,
+      resuelto: q.resuelto,
+      puntaje: q.puntaje,
+      racha: q.racha,
+      preguntasTotales: q.preguntasTotales
+    });
+    if (sig === firma) return;
+    firma = sig;
     root.className = 'mx-auto max-w-3xl';
     root.innerHTML = `
       <header class="mb-4 flex flex-wrap items-center justify-between gap-3">

@@ -123,7 +123,7 @@ export function renderTabla(root: HTMLElement): void {
     const cell = document.createElement('button');
     const { col, row } = gridPos(el);
     cell.className =
-      'cell fade-in group relative flex cursor-pointer flex-col items-center justify-center rounded-md border aspect-square transition-all duration-150 hover:z-10 hover:scale-110 hover:shadow-lg';
+      'cell group relative flex cursor-pointer flex-col items-center justify-center rounded-md border aspect-square transition-all duration-150 hover:z-10 hover:scale-110 hover:shadow-lg';
     cell.style.gridColumn = String(col);
     cell.style.gridRow = String(row);
     cell.style.background = `color-mix(in oklab, ${cat.color} 14%, var(--pt-cell-base))`;

@@ -194,13 +194,13 @@ html[data-theme='light'] input::placeholder {
 .fade-in {
   animation: fadeIn 0.35s ease both;
 }
+/* Solo opacidad: nunca transform — una animación interrumpida no debe
+   poder dejar una celda desplazada (bug visto en Chrome con pestaña tapada). */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(6px);
   }
   to {
     opacity: 1;
-    transform: none;
   }
 }
