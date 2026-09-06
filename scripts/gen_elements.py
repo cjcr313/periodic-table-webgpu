@@ -113,7 +113,7 @@ E = {
 107:("Bh","Bohrio","270",7,7,"metal-transicion","Transactínido de vida ultracorta.","Sintético; confirmado en Darmstadt, Alemania.","Su nombre honra a Niels Bohr, del modelo atómico de capas."),
 108:("Hs","Hassio","269",8,7,"metal-transicion","Transactínido con química de osmio estudiada en átomos individuales.","Sintético; producido en GSI, Alemania.","Se han estudiado sus compuestos químicos ¡con solo unos pocos átomos!"),
 109:("Mt","Meitnerio","278",9,7,"metal-desconocido","Transactínido ultrapesado; pura física de investigación.","Sintético; átomos que viven fracciones de segundo.","Honra a Lise Meitner, codescubridora de la fisión nuclear."),
-110:("Ds","Darmstatio","281",10,7,"metal-desconocido","Transactínido sintético de vida corta.","Sintético; creado en Darmstadt, Alemania.","Su símbolo Ds marca el laboratorio alemán GSI."),
+110:("Ds","Darmstadtio","281",10,7,"metal-desconocido","Transactínido sintético de vida corta.","Sintético; creado en Darmstadt, Alemania.","Su símbolo Ds marca el laboratorio alemán GSI."),
 111:("Rg","Roentgenio","282",11,7,"metal-desconocido","Transactínido hipotéticamente dorado.","Sintético; átomos fugaces.","Se especula que sería un metal noble parecido al oro."),
 112:("Cn","Copernicio","285",12,7,"metal-desconocido","Transactínido quizás volátil como gas noble.","Sintético; pocos átomos detectados.","Nombrado por Copérnico, que movió la Tierra del centro del universo."),
 113:("Nh","Nihonio","286",13,7,"metal-desconocido","Primer elemento descubierto en Asia (Japón).","Sintético; creado en RIKEN, Japón.","'Nihon' significa Japón: primer elemento de nombre asiático."),
@@ -121,7 +121,7 @@ E = {
 115:("Mc","Moscovio","290",15,7,"metal-desconocido","Transactínido sintético ruso-estadounidense.","Sintético; producido en Dubna.","Nombrado por el óblast de Moscú, no por la ciudad."),
 116:("Lv","Livermorio","293",16,7,"metal-desconocido","Transactínido de vida ultracorta.","Sintético; laboratorio Lawrence Livermore, EE.UU.","El nombre honra el laboratorio Livermore, California."),
 117:("Ts","Teneso","294",17,7,"halogeno","El halógeno sintético más nuevo.","Sintético; colisionando calcio y berkelio.","Nombrado por Tennessee, sede del laboratorio Oak Ridge."),
-118:("Og","Oganessón","294",18,7,"gas-noble","El elemento más pesado conocido; quizás sólido, no gas.","Sintético; creado en Dubna, Rusia.","Es el único elemento nombrado por una persona viva: Yuri Oganessian."),
+118:("Og","Oganesón","294",18,7,"gas-noble","El elemento más pesado conocido; quizás sólido, no gas.","Sintético; creado en Dubna, Rusia.","Es el único elemento nombrado por una persona viva: Yuri Oganessian."),
 }
 
 CATEGORIAS = [

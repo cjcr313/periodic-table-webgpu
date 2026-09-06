@@ -110,7 +110,7 @@ export function renderTabla(root: HTMLElement): void {
       <span class="absolute top-0.5 left-1 font-mono text-[8px] text-slate-400">${el.z}</span>
       ${esSerie ? `<span class="absolute top-0.5 right-1 font-mono text-[7px] text-slate-500">${el.masa}</span>` : ''}
       <span class="font-mono text-sm font-bold sm:text-base" style="color:${cat.color}">${el.simbolo}</span>
-      <span class="max-w-full truncate px-1 text-[7px] text-slate-400">${el.nombre}</span>
+      <span class="max-w-full truncate px-0 text-[9px] text-slate-400">${el.nombre}</span>
     `;
     cell.onclick = () => {
       useStore.getState().seleccionar(el);
