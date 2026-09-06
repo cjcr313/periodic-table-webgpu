@@ -1,7 +1,7 @@
 {
   "name": "periodic-table-webgpu",
   "private": true,
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Tabla periódica interactiva en español con visual 3D (Three.js), fichas de elementos y modo juego. Beta 0.1.",
   "type": "module",
   "keywords": [

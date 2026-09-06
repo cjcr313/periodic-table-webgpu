@@ -42,7 +42,7 @@ export function createDetailsPanel(): { render: () => void } {
 
     panel = document.createElement('aside');
     panel.className =
-      'glass fade-in relative max-h-[86vh] w-full max-w-md overflow-y-auto rounded-xl p-5';
+      'glass fade-in relative max-h-[86vh] w-full max-w-2xl overflow-y-auto rounded-xl p-5';
     panel.innerHTML = `
       <div class="mb-3 flex items-start justify-between gap-2">
         <div class="flex items-center gap-3">
@@ -66,31 +66,33 @@ export function createDetailsPanel(): { render: () => void } {
         <div class="flex justify-between"><dt class="text-slate-500">Periodo</dt><dd>${el.periodo}</dd></div>
       </dl>
 
-      <div class="mt-3 space-y-2.5 text-[12px] leading-relaxed text-slate-300">
-        <div>
+      <div class="mt-3 flex flex-col gap-4 sm:flex-row sm:items-start">
+        <div class="order-2 min-w-0 flex-1 space-y-2.5 text-[12px] leading-relaxed text-slate-300 sm:order-1">
+          <div>
+            <h3 class="mb-0.5 text-[10px] font-semibold tracking-wider text-rose-200 uppercase">🧪 Molécula natural</h3>
+            <p>${moleculaNatural(el)}</p>
+          </div>
+          <div>
+            <h3 class="mb-0.5 text-[10px] font-semibold tracking-wider text-cyan-300 uppercase">Descripción</h3>
+            <p>${el.descripcion}</p>
+          </div>
+          <div>
+            <h3 class="mb-0.5 text-[10px] font-semibold tracking-wider text-violet-300 uppercase">🔬 Descubrimiento</h3>
+            <p>${el.descubridor ? `Descubierto por ${el.descubridor} en ${el.anioDescubrimiento}.` : 'Conocido desde la antigüedad.'}</p>
+          </div>
+          <div>
+            <h3 class="mb-0.5 text-[10px] font-semibold tracking-wider text-emerald-300 uppercase">🌍 En la naturaleza</h3>
+            <p>${el.donde}</p>
+          </div>
+          <div>
+            <h3 class="mb-0.5 text-[10px] font-semibold tracking-wider text-amber-300 uppercase">💡 Curiosidad</h3>
+            <p>${el.curiosidad}</p>
+          </div>
+        </div>
+        <div class="order-1 shrink-0 sm:order-2 sm:sticky sm:top-0 sm:w-[230px]">
           <h3 class="mb-0.5 text-[10px] font-semibold tracking-wider text-cyan-300 uppercase">⚛️ Modelo atómico (Bohr)</h3>
           ${svgAtomo(el.z, capasElectronicas(el.z), neutronesAprox(el.masa, el.z), cat.color)}
           <p class="text-center font-mono text-[10px] text-slate-400">Protones ${el.z} · Neutrones ${neutronesAprox(el.masa, el.z)} · Electrones ${el.z} (átomo neutro)</p>
-        </div>
-        <div>
-          <h3 class="mb-0.5 text-[10px] font-semibold tracking-wider text-rose-200 uppercase">🧪 Molécula natural</h3>
-          <p>${moleculaNatural(el)}</p>
-        </div>
-        <div>
-          <h3 class="mb-0.5 text-[10px] font-semibold tracking-wider text-cyan-300 uppercase">Descripción</h3>
-          <p>${el.descripcion}</p>
-        </div>
-        <div>
-          <h3 class="mb-0.5 text-[10px] font-semibold tracking-wider text-violet-300 uppercase">🔬 Descubrimiento</h3>
-          <p>${el.descubridor ? `Descubierto por ${el.descubridor} en ${el.anioDescubrimiento}.` : 'Conocido desde la antigüedad.'}</p>
-        </div>
-        <div>
-          <h3 class="mb-0.5 text-[10px] font-semibold tracking-wider text-emerald-300 uppercase">🌍 En la naturaleza</h3>
-          <p>${el.donde}</p>
-        </div>
-        <div>
-          <h3 class="mb-0.5 text-[10px] font-semibold tracking-wider text-amber-300 uppercase">💡 Curiosidad</h3>
-          <p>${el.curiosidad}</p>
         </div>
       </div>
     `;
