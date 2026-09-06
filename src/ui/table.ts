@@ -48,7 +48,7 @@ export function renderTabla(root: HTMLElement): void {
   header.innerHTML = `
     <div>
       <h1 class="text-xl font-bold tracking-tight text-cyan-200">⚛️ Tabla Periódica Interactiva</h1>
-      <p class="text-xs text-slate-400">Beta 0.4 · 118 elementos · aprende jugando</p>
+      <p class="text-xs text-slate-400">Beta 0.5 · 118 elementos · aprende jugando</p>
     </div>
     <div id="header-acciones" class="flex items-center gap-2">
       <input id="buscador" type="search" placeholder="Buscar: nombre, símbolo o nº…"
@@ -77,6 +77,12 @@ export function renderTabla(root: HTMLElement): void {
     leyenda.appendChild(b);
   }
   root.appendChild(leyenda);
+
+  // ---------- Panel explicativo de la categoría seleccionada ----------
+  const infoCat = document.createElement('div');
+  infoCat.id = 'info-categoria';
+  infoCat.className = 'glass mb-3 hidden rounded-lg px-4 py-3 text-[12px] leading-relaxed text-slate-300';
+  root.appendChild(infoCat);
 
   // ---------- Grid ----------
   const wrap = document.createElement('div');
@@ -143,6 +149,18 @@ export function renderTabla(root: HTMLElement): void {
     }
     for (const chip of leyenda.querySelectorAll<HTMLButtonElement>('.chip')) {
       chip.classList.toggle('active', chip.dataset.cat === categoriaFiltro);
+    }
+    // Explicación de la categoría activa (qué significa ese grupo)
+    const cat = categoriaFiltro ? categoriaDe(categoriaFiltro) : null;
+    if (cat) {
+      infoCat.classList.remove('hidden');
+      infoCat.style.borderColor = `color-mix(in oklab, ${cat.color} 55%, transparent)`;
+      infoCat.innerHTML =
+        `<span class="mr-1.5 inline-block h-2 w-2 rounded-full align-middle" style="background:${cat.color}"></span>` +
+        `<strong class="text-slate-100">${cat.nombre}</strong> — ${cat.descripcion} ` +
+        `<em class="text-slate-500">(click de nuevo en la etiqueta para quitar el filtro)</em>`;
+    } else {
+      infoCat.classList.add('hidden');
     }
   }
 }

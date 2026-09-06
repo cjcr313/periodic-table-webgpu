@@ -125,17 +125,17 @@ E = {
 }
 
 CATEGORIAS = [
-    ("metal-alcalino", "Metal alcalino", "#f87171"),
-    ("metal-alcalinoterreo", "Metal alcalinotérreo", "#fb923c"),
-    ("metal-transicion", "Metal de transición", "#facc15"),
-    ("metal-post-transicion",Metal_lot := "Metal post-transición", "#4ade80"),
-    ("semimetal", "Semimetal", "#2dd4bf"),
-    ("no-metal", "No metal", "#22d3ee"),
-    ("halogeno", "Halógeno", "#60a5fa"),
-    ("gas-noble", "Gas noble", "#a78bfa"),
-    ("lantenido", "Lantánido", "#f472b6"),
-    ("actinido", "Actínido", "#e879f9"),
-    ("metal-desconocido", "Propiedades desconocidas", "#94a3b8"),
+    ("metal-alcalino", "Metal alcalino", "#f87171", "Metales muy reactivos y blandos con 1 electrón en su capa exterior: lo ceden con facilidad y por eso reaccionan violentamente con el agua (¡el sodio explota!). Nunca están solos en la naturaleza, siempre en compuestos como la sal de mesa. Ejemplos: litio, sodio, potasio."),
+    ("metal-alcalinoterreo", "Metal alcalinotérreo", "#fb923c", "Metales reactivos con 2 electrones exteriores, menos violentos que los alcalinos. Arden con colores intensos y son parte de ti: el calcio forma tus huesos y el magnesio va al centro de la clorofila. Ejemplos: magnesio, calcio, bario."),
+    ("metal-transicion", "Metal de transición", "#facc15", "Los metales duros de la civilización (grupos 3 al 12): usan varias capas de electrones, por eso tienen colores llamativos y múltiples estados de oxidación. Buenos conductores, útiles en aleaciones. Ejemplos: hierro, cobre, oro, titanio."),
+    ("metal-post-transicion", "Metal post-transición", "#4ade80", "Metales blandos y de bajo punto de fusión, los metales de la vida diaria: aluminio de las latas, estaño de las soldaduras, plomo de las baterías. Más ligeros y fáciles de fundir que los de transición."),
+    ("semimetal", "Semimetal", "#2dd4bf", "Viven en la frontera entre metal y no-metal: conducen la electricidad solo bajo ciertas condiciones (semiconductores). Sin ellos no existirían los chips: silicio y germanio. Ejemplos: boro, silicio, arsénico."),
+    ("no-metal", "No metal", "#22d3ee", "Elementos que no brillan ni conducen como los metales: son aislantes y frágiles. Incluyen los bloques de la vida (carbono, nitrógeno, oxígeno, fósforo, azufre) y el hidrógeno, el más abundante del universo."),
+    ("halogeno", "Halógeno", "#60a5fa", "No metales ultrarreactivos con 7 electrones exteriores: les falta UNO para completar su capa y atacan a quien se lo dé. Halógeno significa generador de sales. Ejemplos: flúor, cloro (desinfecta tu agua), yodo (tu tiroides)."),
+    ("gas-noble", "Gas noble", "#a78bfa", "Los zen de la tabla: tienen la capa electrónica completa y no necesitan reaccionar con nadie. Por eso el argón llena bombillas y el neón brilla en los letreros sin quemarse. Ejemplos: helio, neón, argón."),
+    ("lantenido", "Lantánido", "#f472b6", "Serie de 15 metales del lantano al lutecio, casi idénticos entre sí: sus electrones diferenciales van en capas internas (capa f), por eso cuestan de separar y se llaman tierras raras. Claves en imanes, pantallas y láseres. Selecciona La para iluminarlos todos."),
+    ("actinido", "Actínido", "#e879f9", "Serie de 15 metales radiactivos del actinio al lawrencio: todos sus isótopos son inestables. El uranio y el plutonio alimentan reactores nucleares; el resto apenas existe unos segundos en laboratorios. Selecciona Ac para iluminarlos todos."),
+    ("metal-desconocido", "Propiedades desconocidas", "#94a3b8", "Elementos superpesados creados en laboratorio que viven segundos: no se han fabricado suficientes átomos para medir sus propiedades reales. Su posición en la tabla es tentativa, según su número atómico."),
 ]
 
 def esc(s): return s.replace("\\", "\\\\").replace("'", "\\'").replace('"', '\\"')
@@ -147,11 +147,11 @@ for i,(cid,_,_) in enumerate(CATEGORIAS):
     lines.append(f"  | '{cid}'")
 lines.append(";")
 lines.append("")
-lines.append("export interface Categoria { id: CategoriaId; nombre: string; color: string; }")
+lines.append("export interface Categoria { id: CategoriaId; nombre: string; color: string; descripcion: string; }")
 lines.append("")
 lines.append("export const CATEGORIAS: Categoria[] = [")
-for cid,nombre,color in CATEGORIAS:
-    lines.append(f"  {{ id: '{cid}', nombre: '{nombre}', color: '{color}' }},")
+for cid,nombre,color,descat in CATEGORIAS:
+    lines.append(f"  {{ id: '{cid}', nombre: '{nombre}', color: '{color}', descripcion: '{esc(descat)}' }},")
 lines.append("];")
 lines.append("")
 lines.append("export interface Elemento {")

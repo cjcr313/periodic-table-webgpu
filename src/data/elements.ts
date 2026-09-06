@@ -13,20 +13,20 @@ export type CategoriaId =
   | 'metal-desconocido'
 ;
 
-export interface Categoria { id: CategoriaId; nombre: string; color: string; }
+export interface Categoria { id: CategoriaId; nombre: string; color: string; descripcion: string; }
 
 export const CATEGORIAS: Categoria[] = [
-  { id: 'metal-alcalino', nombre: 'Metal alcalino', color: '#f87171' },
-  { id: 'metal-alcalinoterreo', nombre: 'Metal alcalinotérreo', color: '#fb923c' },
-  { id: 'metal-transicion', nombre: 'Metal de transición', color: '#facc15' },
-  { id: 'metal-post-transicion', nombre: 'Metal post-transición', color: '#4ade80' },
-  { id: 'semimetal', nombre: 'Semimetal', color: '#2dd4bf' },
-  { id: 'no-metal', nombre: 'No metal', color: '#22d3ee' },
-  { id: 'halogeno', nombre: 'Halógeno', color: '#60a5fa' },
-  { id: 'gas-noble', nombre: 'Gas noble', color: '#a78bfa' },
-  { id: 'lantenido', nombre: 'Lantánido', color: '#f472b6' },
-  { id: 'actinido', nombre: 'Actínido', color: '#e879f9' },
-  { id: 'metal-desconocido', nombre: 'Propiedades desconocidas', color: '#94a3b8' },
+  { id: 'metal-alcalino', nombre: 'Metal alcalino', color: '#f87171', descripcion: 'Metales muy reactivos y blandos con 1 electrón en su capa exterior: lo ceden con facilidad y por eso reaccionan violentamente con el agua (¡el sodio explota!). Nunca están solos en la naturaleza, siempre en compuestos como la sal de mesa. Ejemplos: litio, sodio, potasio.' },
+  { id: 'metal-alcalinoterreo', nombre: 'Metal alcalinotérreo', color: '#fb923c', descripcion: 'Metales reactivos con 2 electrones exteriores, menos violentos que los alcalinos. Arden con colores intensos y son parte de ti: el calcio forma tus huesos y el magnesio va al centro de la clorofila. Ejemplos: magnesio, calcio, bario.' },
+  { id: 'metal-transicion', nombre: 'Metal de transición', color: '#facc15', descripcion: 'Los metales duros de la civilización (grupos 3 al 12): usan varias capas de electrones, por eso tienen colores llamativos y múltiples estados de oxidación. Buenos conductores, útiles en aleaciones. Ejemplos: hierro, cobre, oro, titanio.' },
+  { id: 'metal-post-transicion', nombre: 'Metal post-transición', color: '#4ade80', descripcion: 'Metales blandos y de bajo punto de fusión, los metales de la vida diaria: aluminio de las latas, estaño de las soldaduras, plomo de las baterías. Más ligeros y fáciles de fundir que los de transición.' },
+  { id: 'semimetal', nombre: 'Semimetal', color: '#2dd4bf', descripcion: 'Viven en la frontera entre metal y no-metal: conducen la electricidad solo bajo ciertas condiciones (semiconductores). Sin ellos no existirían los chips: silicio y germanio. Ejemplos: boro, silicio, arsénico.' },
+  { id: 'no-metal', nombre: 'No metal', color: '#22d3ee', descripcion: 'Elementos que no brillan ni conducen como los metales: son aislantes y frágiles. Incluyen los bloques de la vida (carbono, nitrógeno, oxígeno, fósforo, azufre) y el hidrógeno, el más abundante del universo.' },
+  { id: 'halogeno', nombre: 'Halógeno', color: '#60a5fa', descripcion: 'No metales ultrarreactivos con 7 electrones exteriores: les falta UNO para completar su capa y atacan a quien se lo dé. Halógeno significa generador de sales. Ejemplos: flúor, cloro (desinfecta tu agua), yodo (tu tiroides).' },
+  { id: 'gas-noble', nombre: 'Gas noble', color: '#a78bfa', descripcion: 'Los zen de la tabla: tienen la capa electrónica completa y no necesitan reaccionar con nadie. Por eso el argón llena bombillas y el neón brilla en los letreros sin quemarse. Ejemplos: helio, neón, argón.' },
+  { id: 'lantenido', nombre: 'Lantánido', color: '#f472b6', descripcion: 'Serie de 15 metales del lantano al lutecio, casi idénticos entre sí: sus electrones diferenciales van en capas internas (capa f), por eso cuestan de separar y se llaman tierras raras. Claves en imanes, pantallas y láseres. Selecciona La para iluminarlos todos.' },
+  { id: 'actinido', nombre: 'Actínido', color: '#e879f9', descripcion: 'Serie de 15 metales radiactivos del actinio al lawrencio: todos sus isótopos son inestables. El uranio y el plutonio alimentan reactores nucleares; el resto apenas existe unos segundos en laboratorios. Selecciona Ac para iluminarlos todos.' },
+  { id: 'metal-desconocido', nombre: 'Propiedades desconocidas', color: '#94a3b8', descripcion: 'Elementos superpesados creados en laboratorio que viven segundos: no se han fabricado suficientes átomos para medir sus propiedades reales. Su posición en la tabla es tentativa, según su número atómico.' },
 ];
 
 export interface Elemento {
