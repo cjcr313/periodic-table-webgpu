@@ -156,24 +156,6 @@ html[data-theme='light'] input::placeholder {
   color: #94a3b8;
 }
 
-/* ---------- Etiquetas de las series f (lantánidos / actínidos) ---------- */
-.f-label {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding-right: 8px;
-  font-family: var(--font-mono-hud);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--pt-lant);
-  opacity: 0.9;
-}
-.f-label.act {
-  color: var(--pt-act);
-}
-
 /* ---------- Scrollbars ---------- */
 * {
   scrollbar-width: thin;

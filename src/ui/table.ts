@@ -5,13 +5,17 @@ import { ELEMENTOS, CATEGORIAS, categoriaDe, type Elemento } from '../data/eleme
 import { useStore } from './store';
 import { crearBotonTema } from './theme';
 
-/** Columna/fila para lantánidos y actínidos (fila separada bajo la tabla). */
+/** Posición en el grid: La y Ac representan a sus series en el grupo 3
+ *  (como la tabla de Google); el resto de la serie va en filas separadas
+ *  debajo: Ce(58)→col4 … Lu(71)→col17 y Th(90)→col4 … Lr(103)→col17. */
 function gridPos(el: Elemento): { col: number; row: number } {
+  if (el.z === 57) return { col: 3, row: 6 }; // La (lantánidos)
+  if (el.z === 89) return { col: 3, row: 7 }; // Ac (actínidos)
   if (el.periodo === 6 && el.categoria === 'lantenido') {
-    return { col: el.z - 57 + 3, row: 9 }; // La (57) → col 3 … Lu (71) → col 17
+    return { col: el.z - 58 + 4, row: 9 };
   }
   if (el.periodo === 7 && el.categoria === 'actinido') {
-    return { col: el.z - 89 + 3, row: 10 };
+    return { col: el.z - 90 + 4, row: 10 };
   }
   return { col: el.grupo ?? 3, row: el.periodo };
 }
@@ -19,11 +23,13 @@ function gridPos(el: Elemento): { col: number; row: number } {
 export function renderTabla(root: HTMLElement): void {
   root.innerHTML = '';
 
-  /** Hace scroll hasta la serie f y destella sus celdas (57–71 / 89–103). */
+  /** Centra la vista en la fila f de la serie y destella TODAS sus celdas
+   *  (incluida La/Ac del grid principal). */
   function enfocarSerie(cat: 'lantenido' | 'actinido', color: string): void {
     const celdas = [...grid.querySelectorAll<HTMLElement>(`.cell[data-cat="${cat}"]`)];
     if (celdas.length === 0) return;
-    celdas[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+    // celdas[1] = primera celda de la fila f (Ce/Th); si no cabe, hacerla visible
+    (celdas[1] ?? celdas[0]).scrollIntoView({ behavior: 'smooth', block: 'center' });
     for (const c of celdas) {
       c.animate(
         [
@@ -42,7 +48,7 @@ export function renderTabla(root: HTMLElement): void {
   header.innerHTML = `
     <div>
       <h1 class="text-xl font-bold tracking-tight text-cyan-200">⚛️ Tabla Periódica Interactiva</h1>
-      <p class="text-xs text-slate-400">Beta 0.2 · 118 elementos · aprende jugando</p>
+      <p class="text-xs text-slate-400">Beta 0.3 · 118 elementos · aprende jugando</p>
     </div>
     <div id="header-acciones" class="flex items-center gap-2">
       <input id="buscador" type="search" placeholder="Buscar: nombre, símbolo o nº…"
@@ -83,41 +89,6 @@ export function renderTabla(root: HTMLElement): void {
   wrap.appendChild(grid);
   root.appendChild(wrap);
 
-  // Marcadores de posición para lantánidos/actínidos en las celdas 57-71 / 89-103.
-  // Al hacer clic, llevan hasta la fila real de la serie (con destello).
-  const gapLa = document.createElement('button');
-  gapLa.style.gridColumn = '3';
-  gapLa.style.gridRow = '6';
-  gapLa.className = 'flex cursor-pointer items-center justify-center rounded border border-pink-400/40 bg-pink-500/10 text-[9px] text-pink-300 transition-all duration-150 hover:scale-105 hover:border-pink-400/80';
-  gapLa.innerHTML = '57–71<br>La–Lu';
-  gapLa.title = 'Lantánidos: ver su fila ↓';
-  gapLa.setAttribute('aria-label', 'Ver lantánidos (57–71)');
-  gapLa.onclick = () => enfocarSerie('lantenido', '#f472b6');
-  grid.appendChild(gapLa);
-  const gapAc = document.createElement('button');
-  gapAc.style.gridColumn = '3';
-  gapAc.style.gridRow = '7';
-  gapAc.className = 'flex cursor-pointer items-center justify-center rounded border border-fuchsia-400/40 bg-fuchsia-500/10 text-[9px] text-fuchsia-300 transition-all duration-150 hover:scale-105 hover:border-fuchsia-400/80';
-  gapAc.innerHTML = '89–103<br>Ac–Lr';
-  gapAc.title = 'Actínidos: ver su fila ↓';
-  gapAc.setAttribute('aria-label', 'Ver actínidos (89–103)');
-  gapAc.onclick = () => enfocarSerie('actinido', '#e879f9');
-  grid.appendChild(gapAc);
-
-  // Etiquetas de serie a la izquierda de las filas f (cols 1–2)
-  const lblLa = document.createElement('div');
-  lblLa.className = 'f-label';
-  lblLa.style.gridColumn = '1 / span 2';
-  lblLa.style.gridRow = '9';
-  lblLa.textContent = 'Lantánidos';
-  grid.appendChild(lblLa);
-  const lblAc = document.createElement('div');
-  lblAc.className = 'f-label act';
-  lblAc.style.gridColumn = '1 / span 2';
-  lblAc.style.gridRow = '10';
-  lblAc.textContent = 'Actínidos';
-  grid.appendChild(lblAc);
-
   for (const el of ELEMENTOS) {
     const cat = categoriaDe(el.categoria)!;
     const cell = document.createElement('button');
@@ -132,12 +103,19 @@ export function renderTabla(root: HTMLElement): void {
     cell.dataset.nombre = el.nombre.toLowerCase();
     cell.dataset.simbolo = el.simbolo.toLowerCase();
     cell.dataset.cat = el.categoria;
+    // La (57) y Ac (89): celdas de serie — muestran masa y al seleccionarlas
+    // se ilumina toda su familia (lantánidos/actínidos), como la tabla de Google.
+    const esSerie = el.z === 57 || el.z === 89;
     cell.innerHTML = `
       <span class="absolute top-0.5 left-1 font-mono text-[8px] text-slate-400">${el.z}</span>
+      ${esSerie ? `<span class="absolute top-0.5 right-1 font-mono text-[7px] text-slate-500">${el.masa}</span>` : ''}
       <span class="font-mono text-sm font-bold sm:text-base" style="color:${cat.color}">${el.simbolo}</span>
       <span class="max-w-full truncate px-1 text-[7px] text-slate-400">${el.nombre}</span>
     `;
-    cell.onclick = () => useStore.getState().seleccionar(el);
+    cell.onclick = () => {
+      useStore.getState().seleccionar(el);
+      if (esSerie) enfocarSerie(el.z === 57 ? 'lantenido' : 'actinido', cat.color);
+    };
     grid.appendChild(cell);
   }
 
