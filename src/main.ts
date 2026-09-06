@@ -1,15 +1,11 @@
 /**
- * main.ts — Punto de entrada: fondo 3D, tabla, ficha y quiz.
+ * main.ts — Punto de entrada: tabla, ficha y quiz.
  */
 import './styles.css';
-import { createBackground } from './scene/background';
 import { renderTabla } from './ui/table';
 import { createDetailsPanel } from './ui/details';
 import { createQuiz } from './ui/quiz';
 import { useStore } from './ui/store';
-
-const canvas = document.getElementById('bg3d') as HTMLCanvasElement;
-createBackground(canvas);
 
 const app = document.getElementById('app-root')!;
 
