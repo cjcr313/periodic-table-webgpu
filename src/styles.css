@@ -132,6 +132,7 @@ html[data-theme='light'] .text-pink-300 { color: var(--pt-lant); }
 html[data-theme='light'] .text-fuchsia-300 { color: var(--pt-act); }
 html[data-theme='light'] .text-emerald-200 { color: #047857; }
 html[data-theme='light'] .text-emerald-300 { color: #047857; }
+html[data-theme='light'] .text-violet-300 { color: #6d28d9; }
 html[data-theme='light'] .text-amber-300 { color: #b45309; }
 
 /* Tarjetas de pistas / resultado del modo juego */

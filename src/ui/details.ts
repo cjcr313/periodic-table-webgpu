@@ -71,6 +71,10 @@ export function createDetailsPanel(): { render: () => void } {
           <p>${el.descripcion}</p>
         </div>
         <div>
+          <h3 class="mb-0.5 text-[10px] font-semibold tracking-wider text-violet-300 uppercase">🔬 Descubrimiento</h3>
+          <p>${el.descubridor ? `Descubierto por ${el.descubridor} en ${el.anioDescubrimiento}.` : 'Conocido desde la antigüedad.'}</p>
+        </div>
+        <div>
           <h3 class="mb-0.5 text-[10px] font-semibold tracking-wider text-emerald-300 uppercase">🌍 En la naturaleza</h3>
           <p>${el.donde}</p>
         </div>
