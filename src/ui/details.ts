@@ -4,6 +4,7 @@
  */
 import { categoriaDe } from '../data/elements';
 import { useStore } from './store';
+import { capasElectronicas, neutronesAprox, svgAtomo, moleculaNatural } from './atomo';
 
 export function createDetailsPanel(): { render: () => void } {
   let overlay: HTMLElement | null = null;
@@ -66,6 +67,15 @@ export function createDetailsPanel(): { render: () => void } {
       </dl>
 
       <div class="mt-3 space-y-2.5 text-[12px] leading-relaxed text-slate-300">
+        <div>
+          <h3 class="mb-0.5 text-[10px] font-semibold tracking-wider text-cyan-300 uppercase">⚛️ Modelo atómico (Bohr)</h3>
+          ${svgAtomo(el.z, capasElectronicas(el.z), neutronesAprox(el.masa, el.z), cat.color)}
+          <p class="text-center font-mono text-[10px] text-slate-400">Protones ${el.z} · Neutrones ${neutronesAprox(el.masa, el.z)} · Electrones ${el.z} (átomo neutro)</p>
+        </div>
+        <div>
+          <h3 class="mb-0.5 text-[10px] font-semibold tracking-wider text-rose-200 uppercase">🧪 Molécula natural</h3>
+          <p>${moleculaNatural(el)}</p>
+        </div>
         <div>
           <h3 class="mb-0.5 text-[10px] font-semibold tracking-wider text-cyan-300 uppercase">Descripción</h3>
           <p>${el.descripcion}</p>
