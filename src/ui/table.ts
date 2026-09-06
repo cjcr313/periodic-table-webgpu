@@ -48,7 +48,7 @@ export function renderTabla(root: HTMLElement): void {
   header.innerHTML = `
     <div>
       <h1 class="text-xl font-bold tracking-tight text-cyan-200">⚛️ Tabla Periódica Interactiva</h1>
-      <p class="text-xs text-slate-400">Beta 0.3 · 118 elementos · aprende jugando</p>
+      <p class="text-xs text-slate-400">Beta 0.4 · 118 elementos · aprende jugando</p>
     </div>
     <div id="header-acciones" class="flex items-center gap-2">
       <input id="buscador" type="search" placeholder="Buscar: nombre, símbolo o nº…"

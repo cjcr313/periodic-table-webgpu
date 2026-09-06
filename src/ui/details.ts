@@ -1,27 +1,47 @@
 /**
- * details.ts — Panel lateral con la ficha del elemento seleccionado.
+ * details.ts — Ficha del elemento seleccionado, como modal centrado.
+ * Se cierra con ✕, clic fuera de la caja o tecla Escape.
  */
 import { categoriaDe } from '../data/elements';
 import { useStore } from './store';
 
 export function createDetailsPanel(): { render: () => void } {
+  let overlay: HTMLElement | null = null;
   let panel: HTMLElement | null = null;
 
-  function render(): void {
-    const { seleccionado, seleccionar } = useStore.getState();
+  function onKey(e: KeyboardEvent): void {
+    if (e.key === 'Escape') cerrar(true);
+  }
 
-    if (panel) {
-      panel.remove();
+  function cerrar(notificar = false): void {
+    document.removeEventListener('keydown', onKey);
+    if (overlay) {
+      overlay.remove();
+      overlay = null;
       panel = null;
     }
+    if (notificar) useStore.getState().seleccionar(null);
+  }
+
+  function render(): void {
+    const { seleccionado } = useStore.getState();
+    cerrar();
     if (!seleccionado) return;
 
     const el = seleccionado;
     const cat = categoriaDe(el.categoria)!;
 
+    overlay = document.createElement('div');
+    overlay.className =
+      'fixed inset-0 z-40 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm';
+    // Clic en el fondo (fuera de la caja) cierra la ficha
+    overlay.onclick = (e) => {
+      if (e.target === overlay) cerrar(true);
+    };
+
     panel = document.createElement('aside');
     panel.className =
-      'glass fade-in fixed top-4 right-4 z-30 max-h-[92vh] w-[340px] overflow-y-auto rounded-xl p-4';
+      'glass fade-in relative max-h-[86vh] w-full max-w-md overflow-y-auto rounded-xl p-5';
     panel.innerHTML = `
       <div class="mb-3 flex items-start justify-between gap-2">
         <div class="flex items-center gap-3">
@@ -35,7 +55,7 @@ export function createDetailsPanel(): { render: () => void } {
             <p class="text-[11px]" style="color:${cat.color}">${cat.nombre}</p>
           </div>
         </div>
-        <button id="cerrar-ficha" class="icon-btn shrink-0" title="Cerrar">✕</button>
+        <button id="cerrar-ficha" class="hud-btn shrink-0 px-2 py-0.5" title="Cerrar (Esc)">✕</button>
       </div>
 
       <dl class="space-y-1 font-mono text-[11px] text-slate-300">
@@ -51,7 +71,7 @@ export function createDetailsPanel(): { render: () => void } {
           <p>${el.descripcion}</p>
         </div>
         <div>
-          <h3 class="mb-0.5 text-[10px] font-semibold tracking-wider text-emerald-300 uppercase">🌍 Dónde se encuentra</h3>
+          <h3 class="mb-0.5 text-[10px] font-semibold tracking-wider text-emerald-300 uppercase">🌍 En la naturaleza</h3>
           <p>${el.donde}</p>
         </div>
         <div>
@@ -60,11 +80,10 @@ export function createDetailsPanel(): { render: () => void } {
         </div>
       </div>
     `;
-    document.body.appendChild(panel);
-    panel.querySelector('#cerrar-ficha')!.addEventListener('click', () => {
-      seleccionar(null);
-      render();
-    });
+    overlay.appendChild(panel);
+    document.body.appendChild(overlay);
+    panel.querySelector('#cerrar-ficha')!.addEventListener('click', () => cerrar(true));
+    document.addEventListener('keydown', onKey);
   }
 
   return { render };
