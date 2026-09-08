@@ -81,7 +81,7 @@ export function svgAtomo(z: number, capas: number[], n: number, color: string): 
     `<text x="${c}" y="${c + 10}" font-size="9" fill="#0f172a" text-anchor="middle" font-family="monospace">${n}n⁰</text>`
   );
 
-  return `<svg viewBox="0 0 ${S} ${S}" class="mx-auto my-1 block w-[min(240px,100%)]" role="img" aria-label="Modelo atómico de Bohr">${partes.join('')}</svg>`;
+  return `<svg viewBox="0 0 ${S} ${S}" class="mx-auto my-1 block w-full" role="img" aria-label="Modelo atómico de Bohr">${partes.join('')}</svg>`;
 }
 
 // ---- Forma molecular natural ----

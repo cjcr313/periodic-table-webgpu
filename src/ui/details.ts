@@ -42,7 +42,7 @@ export function createDetailsPanel(): { render: () => void } {
 
     panel = document.createElement('aside');
     panel.className =
-      'glass fade-in relative max-h-[86vh] w-full max-w-2xl overflow-y-auto rounded-xl p-5';
+      'glass fade-in relative max-h-[86vh] w-full max-w-3xl overflow-y-auto rounded-xl p-5';
     panel.innerHTML = `
       <div class="mb-3 flex items-start justify-between gap-2">
         <div class="flex items-center gap-3">
@@ -59,37 +59,38 @@ export function createDetailsPanel(): { render: () => void } {
         <button id="cerrar-ficha" class="hud-btn shrink-0 px-2 py-0.5" title="Cerrar (Esc)">✕</button>
       </div>
 
-      <dl class="space-y-1 font-mono text-[11px] text-slate-300">
-        <div class="flex justify-between"><dt class="text-slate-500">Número atómico</dt><dd>${el.z}</dd></div>
-        <div class="flex justify-between"><dt class="text-slate-500">Masa atómica</dt><dd>${el.masa} u</dd></div>
-        <div class="flex justify-between"><dt class="text-slate-500">Grupo</dt><dd>${el.grupo ?? '— (serie f)'}</dd></div>
-        <div class="flex justify-between"><dt class="text-slate-500">Periodo</dt><dd>${el.periodo}</dd></div>
-      </dl>
-
-      <div class="mt-3 flex flex-col gap-4 sm:flex-row sm:items-start">
-        <div class="order-2 min-w-0 flex-1 space-y-2.5 text-[12px] leading-relaxed text-slate-300 sm:order-1">
-          <div>
-            <h3 class="mb-0.5 text-[10px] font-semibold tracking-wider text-rose-200 uppercase">🧪 Molécula natural</h3>
-            <p>${moleculaNatural(el)}</p>
-          </div>
-          <div>
-            <h3 class="mb-0.5 text-[10px] font-semibold tracking-wider text-cyan-300 uppercase">Descripción</h3>
-            <p>${el.descripcion}</p>
-          </div>
-          <div>
-            <h3 class="mb-0.5 text-[10px] font-semibold tracking-wider text-violet-300 uppercase">🔬 Descubrimiento</h3>
-            <p>${el.descubridor ? `Descubierto por ${el.descubridor} en ${el.anioDescubrimiento}.` : 'Conocido desde la antigüedad.'}</p>
-          </div>
-          <div>
-            <h3 class="mb-0.5 text-[10px] font-semibold tracking-wider text-emerald-300 uppercase">🌍 En la naturaleza</h3>
-            <p>${el.donde}</p>
-          </div>
-          <div>
-            <h3 class="mb-0.5 text-[10px] font-semibold tracking-wider text-amber-300 uppercase">💡 Curiosidad</h3>
-            <p>${el.curiosidad}</p>
+      <div class="mt-3 grid grid-cols-1 gap-4 sm:grid-cols-[1fr_320px] sm:gap-6">
+        <div class="order-2 min-w-0 sm:order-1">
+          <dl class="mb-3 space-y-1 rounded-lg border border-slate-700/60 bg-slate-900/40 px-3 py-2 font-mono text-[11px] text-slate-300">
+            <div class="flex justify-between"><dt class="text-slate-500">Número atómico</dt><dd>${el.z}</dd></div>
+            <div class="flex justify-between"><dt class="text-slate-500">Masa atómica</dt><dd>${el.masa} u</dd></div>
+            <div class="flex justify-between"><dt class="text-slate-500">Grupo</dt><dd>${el.grupo ?? '— (serie f)'}</dd></div>
+            <div class="flex justify-between"><dt class="text-slate-500">Periodo</dt><dd>${el.periodo}</dd></div>
+          </dl>
+          <div class="space-y-2.5 text-[12px] leading-relaxed text-slate-300">
+            <div>
+              <h3 class="mb-0.5 text-[10px] font-semibold tracking-wider text-rose-200 uppercase">🧪 Molécula natural</h3>
+              <p>${moleculaNatural(el)}</p>
+            </div>
+            <div>
+              <h3 class="mb-0.5 text-[10px] font-semibold tracking-wider text-cyan-300 uppercase">Descripción</h3>
+              <p>${el.descripcion}</p>
+            </div>
+            <div>
+              <h3 class="mb-0.5 text-[10px] font-semibold tracking-wider text-violet-300 uppercase">🔬 Descubrimiento</h3>
+              <p>${el.descubridor ? `Descubierto por ${el.descubridor} en ${el.anioDescubrimiento}.` : 'Conocido desde la antigüedad.'}</p>
+            </div>
+            <div>
+              <h3 class="mb-0.5 text-[10px] font-semibold tracking-wider text-emerald-300 uppercase">🌍 En la naturaleza</h3>
+              <p>${el.donde}</p>
+            </div>
+            <div>
+              <h3 class="mb-0.5 text-[10px] font-semibold tracking-wider text-amber-300 uppercase">💡 Curiosidad</h3>
+              <p>${el.curiosidad}</p>
+            </div>
           </div>
         </div>
-        <div class="order-1 shrink-0 sm:order-2 sm:sticky sm:top-0 sm:w-[230px]">
+        <div class="order-1 mx-auto w-full max-w-[340px] sm:order-2 sm:sticky sm:top-0">
           <h3 class="mb-0.5 text-[10px] font-semibold tracking-wider text-cyan-300 uppercase">⚛️ Modelo atómico (Bohr)</h3>
           ${svgAtomo(el.z, capasElectronicas(el.z), neutronesAprox(el.masa, el.z), cat.color)}
           <p class="text-center font-mono text-[10px] text-slate-400">Protones ${el.z} · Neutrones ${neutronesAprox(el.masa, el.z)} · Electrones ${el.z} (átomo neutro)</p>
