@@ -11,16 +11,19 @@
       rel="icon"
       href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚛️</text></svg>"
     />
-    <title>Tabla Periódica · Beta 0.1</title>
+    <title>Tabla Periódica Interactiva · v0.7</title>
     <script>
-      // Tema antes del primer pintado para evitar destello (ver src/ui/theme.ts)
+      // Tema antes del primer pintado para evitar destello (ver src/ui/theme.ts).
+      // Migra los valores antiguos ("neon" → "tinta", "claro" → "papel").
       try {
-        if (localStorage.getItem('pt:theme') === 'claro')
-          document.documentElement.dataset.theme = 'light';
+        var t = localStorage.getItem('pt:theme');
+        if (t === 'neon') { t = 'tinta'; localStorage.setItem('pt:theme', 'tinta'); }
+        else if (t === 'claro') { t = 'papel'; localStorage.setItem('pt:theme', 'papel'); }
+        if (t === 'tinta') document.documentElement.dataset.theme = 'tinta';
       } catch (e) {}
     </script>
-    <script type="module" crossorigin src="/periodic-table-webgpu/assets/index-v4tev_v3.js"></script>
-    <link rel="stylesheet" crossorigin href="/periodic-table-webgpu/assets/index-BTxWTQfF.css">
+    <script type="module" crossorigin src="/periodic-table-webgpu/assets/index-D4nRWAbS.js"></script>
+    <link rel="stylesheet" crossorigin href="/periodic-table-webgpu/assets/index-BudDQ_fS.css">
   </head>
   <body>
     <div id="app-root"></div>
