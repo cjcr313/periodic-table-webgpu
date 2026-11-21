@@ -1,19 +1,20 @@
 /**
- * theme.ts — Tema visual: "neón" (oscuro, por defecto) ↔ "claro".
- * Se aplica como data-theme="light" en <html> y persiste en localStorage.
- * index.html lo inicializa antes del primer pintado para evitar el destello.
+ * theme.ts — Tema visual: "papel" (claro cálido, por defecto) ↔ "tinta" (oscuro).
+ * Se aplica como data-theme="tinta" en <html> y persiste en localStorage.
+ * index.html lo inicializa antes del primer pintado para evitar el destello
+ * y migra los valores antiguos ("neon"/"claro") de una sola vez.
  */
-export type Tema = 'neon' | 'claro';
+export type Tema = 'papel' | 'tinta';
 
 const KEY = 'pt:theme';
 
 export function temaActual(): Tema {
-  return document.documentElement.dataset.theme === 'light' ? 'claro' : 'neon';
+  return document.documentElement.dataset.theme === 'tinta' ? 'tinta' : 'papel';
 }
 
 export function aplicarTema(t: Tema): void {
-  if (t === 'claro') {
-    document.documentElement.dataset.theme = 'light';
+  if (t === 'tinta') {
+    document.documentElement.dataset.theme = 'tinta';
   } else {
     delete document.documentElement.dataset.theme;
   }
@@ -26,7 +27,7 @@ export function aplicarTema(t: Tema): void {
 }
 
 export function alternarTema(): void {
-  aplicarTema(temaActual() === 'claro' ? 'neon' : 'claro');
+  aplicarTema(temaActual() === 'tinta' ? 'papel' : 'tinta');
 }
 
 /** Botón de tema reutilizable (cabecera de tabla y de modo juego). */
@@ -40,9 +41,9 @@ export function crearBotonTema(): HTMLButtonElement {
 }
 
 function ponerEtiqueta(b: HTMLButtonElement): void {
-  const claro = temaActual() === 'claro';
-  b.textContent = claro ? '🌙 Modo neón' : '☀️ Modo claro';
-  b.title = claro ? 'Volver al tema neón (oscuro)' : 'Cambiar a tema claro';
+  const tinta = temaActual() === 'tinta';
+  b.textContent = tinta ? '☀️ Modo papel' : '🌙 Modo tinta';
+  b.title = tinta ? 'Cambiar a tema papel (claro)' : 'Cambiar a tema tinta (oscuro)';
 }
 
 function refrescarBotones(): void {

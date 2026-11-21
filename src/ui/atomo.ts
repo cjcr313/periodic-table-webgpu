@@ -50,7 +50,7 @@ export function svgAtomo(z: number, capas: number[], n: number, color: string): 
   capas.forEach((k, i) => {
     const r = radio(i);
     partes.push(
-      `<circle cx="${c}" cy="${c}" r="${r}" fill="none" stroke="#64748b" stroke-opacity="0.35" stroke-width="1"/>`
+      `<circle cx="${c}" cy="${c}" r="${r}" fill="none" stroke="var(--muted-2)" stroke-opacity="0.35" stroke-width="1"/>`
     );
     // Cantidad de electrones de la capa, girando lentamente
     let electrones = '';
@@ -58,7 +58,7 @@ export function svgAtomo(z: number, capas: number[], n: number, color: string): 
       const a = (j * 2 * Math.PI) / k + i * 0.7;
       const x = c + r * Math.cos(a);
       const y = c + r * Math.sin(a);
-      electrones += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4.5" fill="#67e8f9" stroke="#0e7490" stroke-width="0.8"/>`;
+      electrones += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4.5" fill="var(--rust-2)" stroke="var(--rust)" stroke-width="0.8"/>`;
     }
     const dur = 16 + i * 5;
     partes.push(
@@ -67,18 +67,18 @@ export function svgAtomo(z: number, capas: number[], n: number, color: string): 
     // Etiqueta de cantidad de electrones de la capa
     const la = -Math.PI / 4;
     partes.push(
-      `<text x="${(c + r * Math.cos(la)).toFixed(1)}" y="${(c + r * Math.sin(la) - 4).toFixed(1)}" font-size="9" fill="#94a3b8" text-anchor="middle" font-family="monospace">${k}e⁻</text>`
+      `<text x="${(c + r * Math.cos(la)).toFixed(1)}" y="${(c + r * Math.sin(la) - 4).toFixed(1)}" font-size="9" fill="var(--muted)" text-anchor="middle" font-family="monospace">${k}e⁻</text>`
     );
   });
   // Núcleo
   partes.push(
-    `<circle cx="${c}" cy="${c}" r="20" fill="${color}" fill-opacity="0.9" stroke="#0f172a" stroke-width="2"/>`
+    `<circle cx="${c}" cy="${c}" r="20" fill="${color}" fill-opacity="0.9" stroke="var(--ink)" stroke-width="2"/>`
   );
   partes.push(
-    `<text x="${c}" y="${c - 2}" font-size="10" font-weight="bold" fill="#0f172a" text-anchor="middle" font-family="monospace">${z}p⁺</text>`
+    `<text x="${c}" y="${c - 2}" font-size="10" font-weight="bold" fill="var(--paper)" text-anchor="middle" font-family="monospace">${z}p⁺</text>`
   );
   partes.push(
-    `<text x="${c}" y="${c + 10}" font-size="9" fill="#0f172a" text-anchor="middle" font-family="monospace">${n}n⁰</text>`
+    `<text x="${c}" y="${c + 10}" font-size="9" fill="var(--paper)" text-anchor="middle" font-family="monospace">${n}n⁰</text>`
   );
 
   return `<svg viewBox="0 0 ${S} ${S}" class="mx-auto my-1 block w-full" role="img" aria-label="Modelo atómico de Bohr">${partes.join('')}</svg>`;

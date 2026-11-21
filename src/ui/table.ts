@@ -47,8 +47,8 @@ export function renderTabla(root: HTMLElement): void {
   header.className = 'mb-4 flex flex-wrap items-center justify-between gap-3';
   header.innerHTML = `
     <div>
-      <h1 class="text-xl font-bold tracking-tight text-cyan-200">⚛️ Tabla Periódica Interactiva</h1>
-      <p class="text-xs text-slate-400">Beta 0.6 · 118 elementos · aprende jugando</p>
+      <h1 class="text-[15px] font-extrabold tracking-tight uppercase text-cyan-200">⚛️ Tabla Periódica Interactiva</h1>
+      <p class="text-[11px] text-slate-400">v0.7 · 118 elementos · aprende jugando</p>
     </div>
     <div id="header-acciones" class="flex items-center gap-2">
       <input id="buscador" type="search" placeholder="Buscar: nombre, símbolo o nº…"
@@ -90,7 +90,7 @@ export function renderTabla(root: HTMLElement): void {
   const grid = document.createElement('div');
   grid.id = 'tabla-grid';
   grid.className =
-    'grid min-w-[900px] gap-[3px]';
+    'grid min-w-[900px] gap-[4px]';
   (grid as HTMLElement).style.gridTemplateColumns = 'repeat(18, minmax(0, 1fr))';
   wrap.appendChild(grid);
   root.appendChild(wrap);
@@ -100,7 +100,7 @@ export function renderTabla(root: HTMLElement): void {
     const cell = document.createElement('button');
     const { col, row } = gridPos(el);
     cell.className =
-      'cell group relative flex cursor-pointer flex-col items-center justify-center rounded-md border aspect-square transition-all duration-150 hover:z-10 hover:scale-110 hover:shadow-lg';
+      'cell group relative flex cursor-pointer flex-col items-center justify-center border aspect-square';
     cell.style.gridColumn = String(col);
     cell.style.gridRow = String(row);
     cell.style.background = `color-mix(in oklab, ${cat.color} 14%, var(--pt-cell-base))`;
@@ -115,7 +115,7 @@ export function renderTabla(root: HTMLElement): void {
     cell.innerHTML = `
       <span class="absolute top-0.5 left-1 font-mono text-[8px] text-slate-400">${el.z}</span>
       ${esSerie ? `<span class="absolute top-0.5 right-1 font-mono text-[7px] text-slate-500">${el.masa}</span>` : ''}
-      <span class="font-mono text-sm font-bold sm:text-base" style="color:${cat.color}">${el.simbolo}</span>
+      <span class="font-mono text-sm font-bold sm:text-base" style="color:color-mix(in oklab, ${cat.color} 78%, var(--ink))">${el.simbolo}</span>
       <span class="max-w-full truncate px-0 text-[9px] text-slate-400">${el.nombre}</span>
     `;
     cell.onclick = () => {

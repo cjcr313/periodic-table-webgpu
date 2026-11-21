@@ -43,8 +43,8 @@ export function createQuiz(): { render: () => void } {
     root.innerHTML = `
       <header class="mb-4 flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h1 class="text-xl font-bold tracking-tight text-cyan-200">🎮 ¿Qué elemento soy?</h1>
-          <p class="text-xs text-slate-400">Adivina con las pistas · menos pistas = más puntos</p>
+          <h1 class="text-[15px] font-extrabold tracking-tight uppercase text-cyan-200">🎮 ¿Qué elemento soy?</h1>
+          <p class="text-[11px] text-slate-400">Adivina con las pistas · menos pistas = más puntos</p>
         </div>
         <div class="flex items-center gap-2">
           <span class="chip">⭐ ${q.puntaje} pts</span>
@@ -74,7 +74,7 @@ export function createQuiz(): { render: () => void } {
           ${q.opciones
             .map(
               (o) => `
-            <button class="opt hud-btn flex-col! py-3" data-z="${o.z}">
+            <button class="opt hud-btn flex-col! py-3!" data-z="${o.z}">
               <span class="font-mono text-lg font-bold">${o.simbolo}</span>
               <span class="text-[10px] text-slate-400">${o.nombre}</span>
             </button>`
